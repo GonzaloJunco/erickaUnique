@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Productos</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
+crossorigin="anonymous">
+</head>
+<body>
+	<div class="container mt-6">
+	<a th:href="@{/new}" class="btn btn-primary">Nuevo</a>
+		<table class="table">
+			<thead></thead>
+			<tr>
+				<td>CODIGO</td>
+				<td>NOMBRE</td>
+				<td>CONTENIDO</td>
+				<td>PRECIO</td>
+				<td>CANTIDAD</td>
+				<td>ACCIONES</td>
+			</tr>
+			<tbody></tbody>
+			<tr th:each="producto:${productos}">
+				<td th:text=${producto.codigo}></td>
+				<td th:text=${producto.nombre}></td>
+				<td th:text=${producto.contenido}></td>
+				<td th:text=${producto.precio}></td>
+				<td th:text=${producto.cantidad}></td>
+				<td>
+				<a th:href="@{/editar/}+${producto.codigo}" class="btn btn-warning">Editar</a>
+				<a th:onclick="eliminar([[${producto.codigo}]])" class="btn btn-danger">Eliminar</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="funciones.js"></script>
+</body>
+</html>
